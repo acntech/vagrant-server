@@ -1,0 +1,18 @@
+version: '3.7'
+
+services:
+  proxy:
+    image: haproxy
+    container_name: proxy
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
+    networks:
+      - minikube
+
+networks:
+  minikube:
+    name: minikube
+    external: true
